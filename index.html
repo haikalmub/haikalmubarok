@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haikal Mubarok | Personal Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070708;
+      --bg-soft:#111114;
+      --panel:#0f0f12;
+      --panel-strong:#17171d;
+      --red:#ff1133;
+      --red-dark:#8a0018;
+      --red-soft:#ff456a;
+      --line:#2a0d15;
+      --text:#f4f4f4;
+      --muted:#bbbbbb;
+      --shadow: rgba(255, 17, 51, 0.28);
+      --glow: rgba(255, 17, 51, 0.55);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; scroll-behavior:smooth; }
+
+    html { scroll-behavior:smooth; }
+
+    body{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,17,51,0.17), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(138,0,24,0.22), transparent 30%),
+        linear-gradient(180deg, #050507 0%, #0b0b0d 100%);
+      color:var(--text);
+      font-family:'Roboto', sans-serif;
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.02),
+          rgba(255,255,255,0.02) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      pointer-events:none;
+      mix-blend-mode:screen;
+      opacity:.7;
+    }
+
+    a { text-decoration:none; color:inherit; }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 7%;
+      background:rgba(9,9,10,0.92);
+      border-bottom:1px solid rgba(255,17,51,0.7);
+      backdrop-filter: blur(8px);
+      box-shadow:0 0 25px rgba(255,17,51,0.15);
+    }
+
+    .logo{
+      font-family:'Metal Mania', cursive;
+      font-size:32px;
+      letter-spacing:2px;
+      color:var(--red-soft);
+      text-shadow:0 0 18px rgba(255,17,51,0.7);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      font-family:'Orbitron', sans-serif;
+      font-size:11px;
+      letter-spacing:2px;
+      color:#f1f1f1;
+      text-transform:uppercase;
+      transition:.25s ease;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0;
+      height:2px;
+      background:linear-gradient(90deg, var(--red), #ff7f96);
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--red-soft);
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .hero{
+      min-height:88vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:60px 20px;
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.85)),
+        radial-gradient(circle at center, rgba(255,17,51,0.24), transparent 24%),
+        linear-gradient(120deg, #09090a 0%, #16070a 40%, #09090a 100%);
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,17,51,0.10), transparent),
+        linear-gradient(180deg, transparent, rgba(255,17,51,0.16), transparent);
+      transform:skewY(-8deg) scale(1.2);
+      opacity:.7;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      font-family:'Orbitron', sans-serif;
+      letter-spacing:7px;
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-family:'Metal Mania', cursive;
+      color:var(--red-soft);
+      font-size:clamp(52px, 9vw, 110px);
+      line-height:.9;
+      letter-spacing:2px;
+      text-shadow:
+        0 0 10px rgba(255,17,51,.8),
+        0 0 25px rgba(255,17,51,.7),
+        0 0 40px rgba(255,17,51,.4);
+      margin-bottom:16px;
+    }
+
+    .hero h2{
+      font-family:'Orbitron', sans-serif;
+      letter-spacing:6px;
+      font-size:18px;
+      text-transform:uppercase;
+      color:#f7f7f7;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      color:#d6d6d6;
+      font-size:16px;
+      margin-bottom:30px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:linear-gradient(180deg, #b60022 0%, #7d0014 100%);
+      border:1px solid rgba(255,106,130,0.8);
+      color:#fff;
+      font-family:'Orbitron', sans-serif;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      box-shadow:0 0 14px rgba(255,17,51,.3);
+      transition:.25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+      transform:translateX(-110%);
+      transition:.45s ease;
+    }
+
+    .btn:hover{
+      background:rgba(0,0,0,0.8);
+      box-shadow:0 0 25px rgba(255,17,51,0.6);
+      transform:translateY(-2px);
+    }
+
+    .btn:hover::before{
+      transform:translateX(110%);
+    }
+
+    section{
+      padding:80px 7%;
+      position:relative;
+    }
+
+    .section-title{
+      font-family:'Metal Mania', cursive;
+      font-size:52px;
+      text-align:center;
+      color:var(--red-soft);
+      margin-bottom:38px;
+      letter-spacing:2px;
+      text-shadow:0 0 18px rgba(255,17,51,0.4);
+    }
+
+    .profile-wrap{
+      max-width:980px;
+      margin:0 auto;
+      background:linear-gradient(145deg, rgba(20,20,22,0.96), rgba(9,9,12,0.96));
+      border:1px solid rgba(255,17,51,0.5);
+      box-shadow:0 0 28px rgba(255,17,51,0.13);
+      padding:32px 28px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .profile-wrap::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(255,17,51,0.08), transparent 35%, transparent 70%, rgba(255,17,51,0.06));
+      pointer-events:none;
+    }
+
+    .profile-wrap p{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      line-height:1.8;
+      position:relative;
+      z-index:1;
+    }
+
+    .profile-wrap p:last-child{
+      border-bottom:none;
+    }
+
+    .profile-wrap strong{
+      color:#ff5370;
+      min-width:140px;
+      font-family:'Orbitron', sans-serif;
+      font-size:12px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+    }
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:22px;
+    }
+
+    .card{
+      background:linear-gradient(145deg, rgba(22,22,25,0.96), rgba(12,12,15,0.96));
+      border:1px solid rgba(255,17,51,0.45);
+      padding:28px 22px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      transition:.28s ease;
+      box-shadow:0 0 20px rgba(255,17,51,0.08);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto -25% -35% auto;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,17,51,0.2), transparent 65%);
+      opacity:0;
+      transition:.25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 28px rgba(255,17,51,0.22);
+      border-color:rgba(255,17,51,0.8);
+    }
+
+    .card:hover::before{
+      opacity:1;
+    }
+
+    .symbol{
+      font-size:42px;
+      margin-bottom:12px;
+      filter:drop-shadow(0 0 14px rgba(255,17,51,0.5));
+    }
+
+    .card h3{
+      font-family:'Orbitron', sans-serif;
+      font-size:15px;
+      letter-spacing:1.8px;
+      margin-bottom:12px;
+      color:#ff5d74;
+      text-transform:uppercase;
+    }
+
+    .card p{
+      color:#d2d2d2;
+      font-size:14px;
+    }
+
+    .contact{
+      background:
+        radial-gradient(circle at top, rgba(255,17,51,0.12), transparent 35%),
+        linear-gradient(180deg, #12070b, #09090a);
+      border-top:1px solid rgba(255,17,51,0.5);
+      border-bottom:1px solid rgba(255,17,51,0.3);
+      text-align:center;
+    }
+
+    .contact p{
+      color:#d7d7d7;
+      margin:10px 0;
+      letter-spacing:1px;
+    }
+
+    footer{
+      padding:26px 20px;
+      text-align:center;
+      background:#040405;
+      border-top:1px solid rgba(255,17,51,0.4);
+      color:#8b8b8b;
+      font-size:13px;
+      letter-spacing:1px;
+    }
+
+    footer span{
+      color:var(--red-soft);
+      font-weight:700;
+    }
+
+    @media (max-width: 760px){
+      nav{
+        flex-direction:column;
+        gap:16px;
+        padding:18px 20px;
+      }
+
+      .nav-links{
+        justify-content:center;
+        gap:12px 18px;
+      }
+
+      .nav-links a{
+        font-size:9px;
+        letter-spacing:1.6px;
+      }
+
+      .section-title{
+        font-size:42px;
+      }
+
+      .profile-wrap{
+        padding:22px 16px;
+      }
+
+      .profile-wrap p{
+        flex-direction:column;
+        gap:4px;
+      }
+
+      .profile-wrap strong{
+        min-width:unset;
+      }
+
+      .hero{
+        min-height:75vh;
+      }
+
+      .hero h2{
+        letter-spacing:3px;
+        font-size:14px;
+      }
+
+      .hero p{
+        letter-spacing:1px;
+        font-size:13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">HAIKAL</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skill">Skill</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Dark Profile</div>
+      <h1>HAIKAL MUBAROK</h1>
+      <h2>Personal Profile</h2>
+      <p>Welcome to my dark world</p>
+      <a href="#about" class="btn">Explore Profile</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="profile-wrap">
+      <p><strong>Nama Lengkap</strong> : Haikal Mubarok</p>
+      <p><strong>Email</strong> : haikalmub11@gmail.com</p>
+      <p><strong>No. HP</strong> : [Tambahkan nomor jika ingin dipublikasikan]</p>
+      <p><strong>Alamat</strong> : Kota Blitar, Jawa Timur</p>
+      <p><strong>Keahlian</strong> : Pemasangan dan Instalasi Jaringan FTTH (Fiber To The Home)</p>
+      <p><strong>Hobi</strong> : Tenis Meja dan Memancing</p>
+    </div>
+  </section>
+
+  <section id="skill">
+    <h2 class="section-title">My Skills</h2>
+
+    <div class="skills">
+      <div class="card">
+        <div class="symbol">🌐</div>
+        <h3>Networking</h3>
+        <p>Pemasangan dan konfigurasi jaringan komputer secara profesional.</p>
+      </div>
+
+      <div class="card">
+        <div class="symbol">🔌</div>
+        <h3>FTTH Installation</h3>
+        <p>Instalasi Fiber To The Home dan jaringan fiber optik.</p>
+      </div>
+
+      <div class="card">
+        <div class="symbol">⚙️</div>
+        <h3>Network Support</h3>
+        <p>Pemahaman dasar instalasi, troubleshooting, dan pemeliharaan jaringan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">My Hobbies</h2>
+
+    <div class="skills">
+      <div class="card">
+        <div class="symbol">🏓</div>
+        <h3>Table Tennis</h3>
+        <p>Olahraga yang melatih fokus, refleks, dan ketenangan.</p>
+      </div>
+
+      <div class="card">
+        <div class="symbol">🎣</div>
+        <h3>Fishing</h3>
+        <p>Menikmati waktu santai sambil menenangkan pikiran.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Interested in networking and technology?</p>
+    <p>Email: haikalmub11@gmail.com</p>
+    <a href="mailto:haikalmub11@gmail.com" class="btn">Send Me an Email</a>
+  </section>
+
+  <footer>
+    <p>© 2026 <span>HAIKAL MUBAROK</span></p>
+    <p>METAL DARK PERSONAL WEBSITE</p>
+  </footer>
+
+</body>
+</html>
